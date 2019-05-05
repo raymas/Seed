@@ -24,7 +24,7 @@ It looks something like this :
 
 Restart Arduino and check in Tools -> Board that you have now some TTGO's board
 
-a## Installing and flashing
+## Installing and flashing
 
 Clone this git or download it as a zip
 
