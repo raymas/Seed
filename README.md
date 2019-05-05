@@ -34,3 +34,8 @@ Open the [LoRaSender](LoRaSender.ino) script with arduino, upload it with the bo
 And here we go again with the other unit, flash it with the [LoRaReceiverESP32](LoRaReceiverESP32.ino) script.
 
 Power up the two modules and observe some messages displayed on the screen.
+
+## Wiring diagram
+
+### Sender unit
+

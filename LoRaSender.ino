@@ -70,3 +70,8 @@ void loop() {
   
   delay(3000);
 }
+
+
+float getSensorValue() {
+  
+}
