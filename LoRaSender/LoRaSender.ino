@@ -16,9 +16,9 @@
 #define DI0     26
 #define BAND    433E6  //915E6 -- 这里的模式选择中，检查一下是否可在中国实用915这个频段
 
-SSD1306  display(0x3c, 4, 15);
-
 int counter = 0;
+
+SSD1306  display(0x3c, 4, 15);
 
 void setup() {
   pinMode(25,OUTPUT); //Send success, LED will bright 1 second
@@ -75,5 +75,5 @@ void loop() {
 
 
 float getSensorValue() {
-  return 0.0;
+  
 }

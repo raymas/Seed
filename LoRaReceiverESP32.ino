@@ -35,7 +35,7 @@ void setup() {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
-  Serial.println("LoRa init completed!")
+  Serial.println("LoRa init completed!");
   
   pinMode(16,OUTPUT);
   digitalWrite(16, LOW);    // set GPIO16 low to reset OLED
