@@ -59,11 +59,11 @@ void loop() {
     // read packet
     while (LoRa.available()) {
       v += (char)LoRa.read();
-      display.clear();
-      display.drawString(0, 1, "LoRa Receiver");
-      display.drawString(0, 10, v);
-      display.display();
     }
+    display.clear();
+    display.drawString(0, 1, "LoRa Receiver");
+    display.drawString(0, 10, String(v));
+    display.display();
 
     Serial.print(v);
     
