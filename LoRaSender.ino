@@ -52,11 +52,11 @@ void loop() {
   Serial.print("Sending packet: ");
   Serial.println(counter);
 
-  int value = 0;
+  int value = random(0, 1000);
 
   display.clear();
   display.drawString(0, 1, "LoRa Sender");
-  display.drawString(0, 10, value);
+  display.drawString(0, 10, String(value));
   display.display();
 
   // send packet
