@@ -7,6 +7,8 @@ Mostly in C language.
 
 ## Getting started
 
+### ESP32 with OLED
+
 The [LoRaReceiverESP32](LoRaReceiverESP32.ino) is to flash on the receiver unit.
 The [LoRaSender](LoRaSender.ino) is to flash on the emmiter unit.
 
@@ -21,6 +23,12 @@ Move the TTGO WIFI-OLED to yours Arduino's hardware folder in your Documents.
 It looks something like this :
 
 ![arduino_path](ressources/arduino_path.jpg)
+
+### BMP180 Bosch pressure sensor
+
+Now Install the library for the BMP180.
+
+Clone the adafruit github for the BMP085 at [github.com](https://github.com/adafruit/Adafruit-BMP085-Library). Place it into your Arduino's libraries folder.
 
 Restart Arduino and check in Tools -> Board that you have now some TTGO's board
 
@@ -40,4 +48,3 @@ Power up the two modules and observe some messages displayed on the screen.
 ## Wiring diagram
 
 ### Sender unit
-

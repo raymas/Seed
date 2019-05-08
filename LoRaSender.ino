@@ -1,8 +1,12 @@
 #include <SPI.h>
 #include <LoRa.h>
 #include <Arduino.h>
+
+// OLED
 #include "SSD1306.h"
 
+//ADAFRUIT I2C Adafruit_BMP085 library compatible with BMP180
+#include <Adafruit_BMP085.h>
 
 // GPIO5  -- SX1278's SCK
 // GPIO19 -- SX1278's MISO
@@ -17,6 +21,15 @@
 #define BAND    433E6  //915E6 -- 这里的模式选择中，检查一下是否可在中国实用915这个频段
 
 SSD1306  display(0x3c, 4, 15);
+
+Adafruit_BMP085 bmp;
+typedef struct {
+  float temperature;
+  float pressure;
+  float altitude;
+  float seaLevelPressure;
+} sensor_struct;
+sensor_struct * sv;
 
 int counter = 0;
 
@@ -52,11 +65,15 @@ void loop() {
   Serial.print("Sending packet: ");
   Serial.println(counter);
 
-  int value = random(0, 1000);
+  getSensorValue(sv);
+
+  //Format is "Temp,Pressure,Altitude,SeaLevelPressure,checksum"
+  String payload = String(sv->temperature) + "," + String(sv->pressure) + "," + String(sv->altitude) + "," + String(sv->seaLevelPressure) + ","
+  payload += String(checksum(payload));
 
   display.clear();
   display.drawString(0, 1, "LoRa Sender");
-  display.drawString(0, 10, String(value));
+  display.drawString(0, 10, payload;
   display.display();
 
   // send packet
@@ -70,10 +87,21 @@ void loop() {
   digitalWrite(25, LOW);    // turn the LED off by making the voltage LOW
   delay(1000);                       // wait for a second
   
-  delay(3000);
+  delay(500);
 }
 
 
-float getSensorValue() {
-  return 0.0;
+void getSensorValue(sensor_struct * sensorValues) {
+  sensorValues->temperature = bmp.readTemperature();      // °C
+  sensorValues->pressure = bmp.readPressure();         // Pa
+  sensorValues->altitude =  bmp.readAltitude();         // m
+  sensorValues->seaLevelPressure = bmp.readSealevelPressure(); //Pa
+}
+
+int checksum(String s) {
+  unsigned int summed = 0;
+  for (int c=0; c < s.length; s++) {
+    summed += (char)s.charAt(c);
+  }
+  return summed % 256;
 }
